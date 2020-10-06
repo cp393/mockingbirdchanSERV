@@ -64,10 +64,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+<meta charset="UTF-8">
 <title>Register with PokeQuiz</title>
 </head>
 <body>
@@ -91,5 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<p>Back to front page. <a href="login.php">Front page</a>.</p>
 </form>
 </div>
+<p>TESTING PLEASE RESPOND</p>
 </body>
 </html>
+
