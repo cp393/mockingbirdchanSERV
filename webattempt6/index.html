@@ -1,0 +1,64 @@
+<html>
+	<head>
+	</head>
+<script>
+
+	//Leaving these functions here just in case
+function HandleLoginResponse(response)
+{
+	var text = JSON.parse(response);
+//	document.getElementById("textResponse").innerHTML = response+"<p>";	
+	document.getElementById("textResponse").innerHTML = "response: "+text+"<p>";
+}
+
+function SendLoginRequest(username,password)
+{
+	var request = new XMLHttpRequest();
+	request.open("POST","login.php",true);
+	request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	request.onreadystatechange= function ()
+	{
+		
+		if ((this.readyState == 4)&&(this.status == 200))
+		{
+			HandleLoginResponse(this.responseText);
+		}		
+	}
+	request.send("type=login&uname="+username+"&pword="+password);
+}
+function SendRegisterRequest(username, password)
+{
+	var request = new XMLHttpRequest();
+	request.open("POST","register.php",true);
+	request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	request.onreadystatechange= function ()
+	{
+		if ((this.readyState == 4)&&(this.status == 200))
+		{
+			HandleLoginResponse(this.responseText);
+		}
+	}
+	request.send("type=register&uname="+username+"&pword="+password);
+}
+</script>
+
+<h1>PokeQuiz Login Page</h1>
+<h2>New? Register!</h2>
+<body>
+	<form action="register.php" method="post">
+		Username:<input type="text" name="username">
+		<br/>
+		Password:<input type="password" name="password">
+		<br/>
+		<input type="submit" value="Register">
+	</form>
+</body>
+<body>
+<div id="textResponse">
+awaiting response
+</div>
+	<script>
+		
+	</script>
+	</body>
+</html>
